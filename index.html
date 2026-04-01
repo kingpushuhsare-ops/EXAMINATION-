@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>KINGSLEY'S DREAM HOUSE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="./scripts/ada-water.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="grass" src="./textures/grass1.jpg" alt="" />
+        <img id="sky" src="./textures/sunny-sky1.jpg" alt="" />
+        <img id="house" alt="./assets/scene.gltf" />
+       
+      </a-assets>
+
+      <!-- Car in front of the house -->
+      <a-entity
+        gltf-model="#car-model"
+        position="38 0 15"
+        rotation="0 180 0"
+        scale="1 1 1"
+      ></a-entity>
+
+      <!-- Tree on the LEFT side of the house -->
+      <a-entity
+        gltf-model="#tree-model"
+        position="25 0 5"
+        rotation="0 0 0"
+        scale="1 1 1"
+      ></a-entity>
+
+      <!-- Tree on the RIGHT side of the house -->
+      <a-entity
+        gltf-model="#tree-model"
+        position="51 0 5"
+        rotation="0 0 0"
+        scale="1 1 1"
+      ></a-entity>
+
+     <!-- Camera position -->
+<a-entity position="38 8 20">
+  <a-camera
+    wasd-controls="fly: true; acceleration: 20"
+    look-controls="pointerLockEnabled: true"
+  ></a-camera>
+</a-entity>
+
+      <!-- Ambient Light -->
+      <a-entity light="type: ambient;"></a-entity>
+
+      <!-- Directional Light -->
+      <a-entity
+        light="type: directional; color: #EEE; intensity: 0.5"
+        position="-1 1 0"
+      ></a-entity>
+
+      <a-sky src="./textures/sunny-sky.jpg" rotation="0 64 0"></a-sky>
+
+      <a-plane
+        material="src: #grass; repeat: 5000 5000"
+        rotation="-90 0 0"
+        scale="10000 10000 1"
+      ></a-plane>
+
+      <a-gltf-model
+        position="38 0 5"
+        scale="1 1 1"
+        src="./assets/scene.gltf"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        id="pool"
+        position="22.28631 -0.42242 -14.85678"
+        scale="5 5 6"
+        src="./swimming_pool/scene.gltf"
+        modify-materials
+      ></a-gltf-model>
+
+      
+
+ 
+
+    <script>
+      document.querySelector("a-water").setAttribute("animation", {
+        property: "scale",
+        dur: 150,
+        loop: true,
+        dir: "alternate",
+        easing: "easeOutElastic",
+      });
+    </script>
+  </body>
+</html>
